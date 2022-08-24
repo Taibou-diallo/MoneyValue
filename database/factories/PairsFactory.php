@@ -16,8 +16,18 @@ class PairsFactory extends Factory
      */
     public function definition()
     {
+        $start = rand(1, 7);
+        $end = rand(1, 6);
+        if ($start == $end) {
+            $end++;
+        }
         return [
             //
+
+            'currency_start' => $start,
+            'currency_end' => $end,
+            'rate' => fake()->randomFloat(4, 0.0001, 10.0000),
+
         ];
     }
 }

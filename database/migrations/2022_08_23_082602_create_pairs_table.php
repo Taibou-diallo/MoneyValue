@@ -14,14 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pairs', function (Blueprint $table) {
-            $table->increments('id');
-            $table->double('rate', 20, 2);
-            $table->enum('satus', ['support', 'no support']);
-            $table->unsignedBigInteger('currency_start')->nullable(); //cle etranger de la table currencies ne peut pas etre nulle
-            $table->unsignedBigInteger('currency_end')->nullable(); //cle etranger de la table currencies ne peut pas etre nulle
+            $table->id();
+            $table->unsignedBigInteger('currency_start')->nullable();
+            $table->foreign('currency_start')->references('id')->on('currencies');
+            $table->unsignedBigInteger('currency_end')->nullable();
+            $table->foreign('currency_end')->references('id')->on('currencies');
+            $table->decimal('rate', 12, 6);
+            // $table->enum('satus', ['support', 'no support']);
+            $table->unique(['currency_start', 'currency_end']);
             $table->timestamps();
-            $table->foreign('currency_start')->references('id')->on('currencies')->onDelete('cascade');
-            $table->foreign('currency_end')->references('id')->on('currencies')->onDelete('cascade');
         });
     }
 

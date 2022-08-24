@@ -8,9 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Pairs extends Model
 {
 
-    public function currencies()
-    {
-        return $this->belongsToMany(Currency::class);
-    }
     use HasFactory;
+
+    public function start()
+    {
+        return $this->belongsTo(Currency::class, 'currency_start');
+    }
+
+    public function end()
+    {
+        return $this->belongsTo(Currency::class, 'currency_end');
+    }
 }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->date('conversion_date');
             $table->decimal('amount', 20, 2);
-            $table->unsignedInteger('pair_id')->nullable(); //cle etranger de la table pairs ne peut pas etre nulle
+            $table->unsignedBigInteger('pair_id')->nullable(); //cle etranger de la table currencies ne peut pas etre nulle
             $table->timestamps();
             $table->foreign('pair_id')->references('id')->on('pairs')->onDelete('cascade');
         });

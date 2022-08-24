@@ -15,5 +15,6 @@ class PairsSeeder extends Seeder
     public function run()
     {
         //
+
     }
 }

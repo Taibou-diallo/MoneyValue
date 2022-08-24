@@ -10,11 +10,21 @@ class Currency extends Model
     use HasFactory;
 
     protected $fillable = [
-        'currency_id', 'name',
+        'currency_code', 'name', 'symbol'
     ];
 
-    // public function products()
+    public function startPairs()
+    {
+        return $this->hasMany(Pairs::class, 'currency_start');
+    }
+
+    public function endPairs()
+    {
+        return $this->hasMany(Pairs::class, 'currency_end');
+    }
+
+    // public function conversion()
     // {
-    //     return $this->hasMany(Product::class);
+    //     return $this->hasMany(Conversion::class, 'pair_id');
     // }
 }

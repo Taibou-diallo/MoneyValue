@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Pairs;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,5 +25,6 @@ class DatabaseSeeder extends Seeder
 
         // Appel de notre seeder
         $this->call(CurrenciesTableSeeder::class);
+        Pairs::factory(20)->create();
     }
 }
