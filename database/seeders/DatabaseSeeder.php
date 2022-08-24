@@ -20,5 +20,8 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        // Appel de notre seeder
+        $this->call(CurrenciesTableSeeder::class);
     }
 }
