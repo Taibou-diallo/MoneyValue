@@ -17,3 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// route pour la liste des pairs
+Route::get('/pair', ['App\Http\Controllers\ApiControler', 'listApi']);
+Route::post('/pair', ['App\Http\Controllers\ApiControler', 'createApi']);
+Route::delete('/pair/{id}', ['App\Http\Controllers\ApiControler', 'deleteApi']);
+
+// route pour les devise
+Route::get('/currency', ['App\Http\Controllers\ApiControler', 'currencyListApi']);
+Route::post('/currency', ['App\Http\Controllers\ApiControler', 'createCurrencyApi']);
+Route::delete('/currency/{id}', ['App\Http\Controllers\ApiControler', 'deleteCurrencyApi']);

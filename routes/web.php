@@ -21,3 +21,5 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', [CurrencyController::class, 'admin'])->name('acceuil');
 
 Route::resource('currencies', CurrencyController::class);
+
+Route::get('create', [CurrencyController::class])->name("create");

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Currency;
+use App\Models\Pairs;
 use Illuminate\Http\Request;
 
 class CurrencyController extends Controller
@@ -32,7 +33,10 @@ class CurrencyController extends Controller
     {
         //
 
-        return view('front.create');
+        $pair = Pairs::all();
+        $currency = Currency::orderBy('currency_start', 'currency_end')->get();
+
+        return view('back.create', compact('pair', 'currency'));
     }
 
     /**
