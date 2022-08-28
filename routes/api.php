@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CurrencyController;
 use App\Http\Controllers\Api\PairsController;
 use Illuminate\Http\Request;
@@ -21,8 +22,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-// route pour les devise
-Route::apiResource('currencies', CurrencyController::class);
 
-// route pour la liste des pairs
-Route::apiResource('pairs', PairsController::class);
+// Routes pour l'administrateur
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
+Route::apiResource('currencies', CurrencyController::class)->middleware('auth:sanctum');
+Route::apiResource('pairs', PairsController::class)->middleware('auth:sanctum');
+
+
+
+// Route pour faire une conversion
+Route::post('conversion', [ConversionController::class, 'conversion']);
