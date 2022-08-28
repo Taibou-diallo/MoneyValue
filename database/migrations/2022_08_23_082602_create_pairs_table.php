@@ -14,14 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pairs', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('currency_start')->nullable();
-            $table->foreign('currency_start')->references('id')->on('currencies');
-            $table->unsignedBigInteger('currency_end')->nullable();
-            $table->foreign('currency_end')->references('id')->on('currencies');
+            $table->increments('id');
+            $table->string('currency_start');
+            $table->foreign('currency_start')->references('currency_code')->on('currencies');
+            $table->string('currency_end');
+            $table->foreign('currency_end')->references('currency_code')->on('currencies');
             $table->decimal('rate', 12, 6);
-            // $table->enum('satus', ['support', 'no support']);
-            $table->unique(['currency_start', 'currency_end']);
+            // $table->unique(['currency_start', 'currency_end']);
             $table->timestamps();
         });
     }

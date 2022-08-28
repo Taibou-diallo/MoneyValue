@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         // Appel de notre seeder
+        $this->call(UsersTableSeeder::class);
         $this->call(CurrenciesTableSeeder::class);
         Pairs::factory(20)->create();
     }

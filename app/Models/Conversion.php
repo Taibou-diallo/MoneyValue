@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Conversion extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['conversion_date', 'amout', 'pair_id'];
+
+    public function pairs()
+    {
+        return $this->belongsTo(Pair::class);
+    }
 }

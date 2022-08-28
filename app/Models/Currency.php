@@ -8,23 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Currency extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'currency_code';
 
-    protected $fillable = [
-        'currency_code', 'name', 'symbol'
-    ];
+    /**
+     * Indicates if the model's ID is auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
 
-    public function startPairs()
-    {
-        return $this->hasMany(Pairs::class, 'currency_start');
-    }
-
-    public function endPairs()
-    {
-        return $this->hasMany(Pairs::class, 'currency_end');
-    }
-
-    // public function conversion()
-    // {
-    //     return $this->hasMany(Conversion::class, 'pair_id');
-    // }
+    protected $fillable = ['currency_code', 'name', 'symbol'];
 }

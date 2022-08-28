@@ -18,8 +18,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-// Route::get('/', [CurrencyController::class, 'admin'])->name('acceuil');
+// // Route::get('/', [CurrencyController::class, 'admin'])->name('acceuil');
 
-Route::resource('currencies', CurrencyController::class);
+// Route::resource('currencies', CurrencyController::class);
 
-Route::get('create', [CurrencyController::class])->name("create");
+// Route::get('create', [CurrencyController::class])->name("create");
+
+// Route::get('create', [CurrencyController::class])->name("create");

@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('conversions', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->date('conversion_date');
             $table->decimal('amount', 20, 2);
-            $table->unsignedBigInteger('pair_id')->nullable(); //cle etranger de la table currencies ne peut pas etre nulle
+            $table->integer('pair_id')->unsigned()->nullable(); //cle etranger de la table currencies ne peut pas etre nulle
             $table->timestamps();
-            $table->foreign('pair_id')->references('id')->on('pairs')->onDelete('cascade');
+            $table->foreign('pair_id')->references('id')->on('pairs');
         });
     }
 

@@ -29,5 +29,12 @@ class PairsFactory extends Factory
             'rate' => fake()->randomFloat(4, 0.0001, 10.0000),
 
         ];
+
+        // return [
+        //     'currency_start' => rand(1, 9),
+        //     'currency_end' => rand(1, 9),
+        //     'rate' => $this->faker->randomFloat(4, 0.0001, 10.0000),
+
+        // ];
     }
 }
