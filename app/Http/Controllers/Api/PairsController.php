@@ -24,7 +24,7 @@ class PairsController extends Controller
                 'status' => 200,
                 'pairs' => $pairs
             ],
-            201
+            200
         );
     }
 
@@ -47,16 +47,20 @@ class PairsController extends Controller
     public function store(AddPairsRequest $request)
     {
         //
-        $pairs = Pairs::create($request->all());
+        try {
+            $pairs = Pairs::create($request->all());
 
-        return response()->json(
-            [
-                'status' => 201,
-                'message' => "La pair a été ajouté avec succès",
-                'pairs' => $pairs
-            ],
-            201
-        );
+            return response()->json(
+                [
+                    'status' => 201,
+                    'message' => "La pair a été ajouté avec succès",
+                    'pairs' => $pairs
+                ],
+                201
+            );
+        } catch (\Throwable $th) {
+            dd($th);
+        }
     }
 
     /**
